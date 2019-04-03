@@ -20,6 +20,7 @@ public class Controller implements Initializable {
     private int tasksAdded = 0;
     private int tasksDone = 0;
     @FXML ProgressBar progressBar;
+    @FXML FlowPane yearPane;
 
 
     @Override
@@ -51,10 +52,13 @@ public class Controller implements Initializable {
      */
     @FXML private void addToTaskScheduelVBox(){
         CheckBox newBox = new CheckBox(addTaskField.getText());
+        newBox.getStyleClass().add("cText");
         newBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue){
                 tasksDone++;
-                vbox.getChildren().remove(newBox);
+                newBox.setStyle("-fx-opacity: 0.5");
+                newBox.setDisable(true);
+                //vbox.getChildren().remove(newBox);
                 updatLabel();
             }
         });
@@ -68,12 +72,14 @@ public class Controller implements Initializable {
     }
 
 
-
     /**
      * Todo -- Spara ner Data varje dag till ett Excel / Databas / TextDokument
      * Todo -- Fixa GoalItems så att de syns i Den andra viewen
      * Todo -- Fixa så vi får en ny Panel där vi kan skriva i Loggbok
      * Todo -- Fixa LoggboksPane för
      * Todo - Möjligtvis även en VisionBoard Pane?
+     * Todo - Rearrangea färdiga Tasks så de hamnar längst ned
+     * Todo - Fixa en Pane för Att lägga in kosten
+     * Todo - Lägg in ShoppingLista -> Se till så den kan pusha till google docs.
      */
 }
