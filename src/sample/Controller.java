@@ -7,7 +7,10 @@ import javafx.scene.control.*;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 
+import java.io.*;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -16,11 +19,17 @@ public class Controller implements Initializable {
     @FXML Label taskDoneLabel;
     @FXML Button addTaskBtn;
     @FXML VBox vbox;
-    @FXML FlowPane monthPane;
+    @FXML FlowPane goalPane;
+    @FXML VBox logbokVbox;
+
+    @FXML TextArea loggTextArea;
+    @FXML Label dateLabel;
+    @FXML TextField headerField;
+    @FXML Button saveNoteBtn;
+
     private int tasksAdded = 0;
     private int tasksDone = 0;
-    @FXML ProgressBar progressBar;
-    @FXML FlowPane yearPane;
+
 
 
     @Override
@@ -28,13 +37,13 @@ public class Controller implements Initializable {
         updatLabel();
         initializeTaskFieldListener();
         initializeMonthProgress();
+        initializeAVbox();
     }
 
 
     private void updatLabel(){
-        taskDoneLabel.setText((tasksAdded) + "/" + (tasksDone));
+        taskDoneLabel.setText((tasksDone) + "/" + (tasksAdded));
     }
-
 
 
     /**
@@ -58,7 +67,6 @@ public class Controller implements Initializable {
                 tasksDone++;
                 newBox.setStyle("-fx-opacity: 0.5");
                 newBox.setDisable(true);
-                //vbox.getChildren().remove(newBox);
                 updatLabel();
             }
         });
@@ -68,18 +76,48 @@ public class Controller implements Initializable {
     }
 
     private void initializeMonthProgress(){
-        monthPane.getChildren().add(new Goal());
+        goalPane.getChildren().add(new GoalPane("Gympass"));
+        goalPane.getChildren().add(new GoalPane("Loggboksinlägg"));
+        goalPane.getChildren().add(new GoalPane("Läsa Programmeringsbok"));
+        goalPane.getChildren().add(new GoalPane("Bra middagar"));
     }
+
+    private void initializeAVbox(){
+        logbokVbox.getChildren().add(new LoggbokPane());
+        logbokVbox.getChildren().add(new LoggbokPane());
+        logbokVbox.getChildren().add(new LoggbokPane());
+    }
+
+    @FXML
+    private void saveNote(){
+        String textToSave = loggTextArea.getText();
+        String path_to_save = "C:\\Users\\Martin\\Documents\\JavaProjekt\\GoalAndScheduling\\Loggboksinlägg\\";
+        String fileName = path_to_save + FileHandling.getCurrentDate("dd-MM-yy") + "_" + headerField.getText() + ".txt";
+
+        try {
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileName));
+            bufferedWriter.append(headerField.getText()).append("\n").append(textToSave);
+            bufferedWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+
 
 
     /**
      * Todo -- Spara ner Data varje dag till ett Excel / Databas / TextDokument
-     * Todo -- Fixa GoalItems så att de syns i Den andra viewen
      * Todo -- Fixa så vi får en ny Panel där vi kan skriva i Loggbok
      * Todo -- Fixa LoggboksPane för
-     * Todo - Möjligtvis även en VisionBoard Pane?
-     * Todo - Rearrangea färdiga Tasks så de hamnar längst ned
-     * Todo - Fixa en Pane för Att lägga in kosten
-     * Todo - Lägg in ShoppingLista -> Se till så den kan pusha till google docs.
+     * Todo -- Möjligtvis även en VisionBoard Pane?
+     * Todo -- Fixa en Pane för Att lägga in kosten
+     * Todo -- Lägg in ShoppingLista -> Se till så den kan pusha till google docs.
+     * Todo -- KunskapsPane -> Att kunna ta och lägga till saker ifrån så den poppar över till en annan pane
+     * Todo -- En pane för alla saker jag vill köpa mig.
+     * Todo -- En liten timer som jag kan trycka igång för att timea mina saker
+     * Todo -- Ta reda på vilken månadens datum är för att uppdatera rätt kolumn.
      */
 }

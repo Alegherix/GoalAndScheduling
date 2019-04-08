@@ -1,0 +1,41 @@
+.items{
+    -fx-background-color: #c9ebf2;
+    -fx-background-color: #383838;
+}
+
+.headers{
+    -fx-font-size: 20px;
+    -fx-font-family: "Constantia";
+    -fx-font-weight: bold;
+    -fx-font-style: italic;
+    -fx-text-fill: #ffffff;
+}
+
+
+.button{
+    -fx-background-radius: 4px;
+}
+
+.cText{
+      -fx-font-family: "Constantia";
+     -fx-text-fill: #ffffff;
+     -fx-font-size: 16px;
+}
+
+.dText{
+     -fx-font-family: "Constantia";
+     -fx-text-fill: #ffffff;
+     -fx-font-size: 14px;
+}
+
+.eText{
+     -fx-font-family: "Constantia";
+     -fx-text-fill: #ffffff;
+     -fx-font-size: 15px;
+}
+
+.goalText{
+     -fx-font-family: "DejaVu Sans Condensed";
+     -fx-text-fill: #ffffff;
+     -fx-font-size: 12px;
+}

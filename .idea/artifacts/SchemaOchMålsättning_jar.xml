@@ -3,7 +3,7 @@
     <output-path>$PROJECT_DIR$/out/artifacts/SchemaOchMålsättning_jar</output-path>
     <root id="archive" name="SchemaOchMålsättning.jar">
       <element id="module-output" name="SchemaOchMålsättning" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/src/lib/gson-2.8.5.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../Java Dependencies/mysql-connector-java-5.1.47/mysql-connector-java-5.1.47.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

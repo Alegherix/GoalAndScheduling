@@ -3,10 +3,9 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -18,44 +17,18 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <MenuBar prefHeight="25.0" prefWidth="800.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
       <StackPane layoutY="25.0" prefHeight="450.0" prefWidth="800.0" styleClass="items" stylesheets="@style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" StackPane.alignment="TOP_LEFT">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #383838;" StackPane.alignment="TOP_LEFT">
                <children>
                   <AnchorPane layoutX="400.0" layoutY="25.0" prefWidth="407.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Separator layoutX="1.0" layoutY="242.0" prefHeight="17.0" prefWidth="400.0" AnchorPane.bottomAnchor="241.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="242.0" />
-                        <Label layoutX="134.0" layoutY="14.0" styleClass="headers" text="Mål för månaden">
+                        <Label layoutX="134.0" layoutY="14.0" styleClass="headers" text="Mål att uppnå">
                            <font>
                               <Font name="Constantia Bold Italic" size="18.0" />
                            </font>
                         </Label>
-                        <Label layoutX="145.0" layoutY="257.0" prefHeight="27.0" prefWidth="138.0" styleClass="headers" text="Mål för året" AnchorPane.bottomAnchor="216.0" AnchorPane.leftAnchor="145.0" AnchorPane.rightAnchor="177.0" AnchorPane.topAnchor="257.0">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Label>
-                        <FlowPane fx:id="monthPane" layoutX="1.0" layoutY="38.0" prefHeight="205.0" prefWidth="460.0" />
-                        <FlowPane fx:id="yearPane" layoutX="2.0" layoutY="284.0" prefHeight="214.0" prefWidth="460.0" />
+                        <FlowPane fx:id="goalPane" layoutX="1.0" layoutY="38.0" prefHeight="467.0" prefWidth="460.0" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutY="25.0" prefHeight="425.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="25.0">
@@ -63,17 +36,17 @@
                         <Separator layoutX="396.0" orientation="VERTICAL" prefHeight="425.0" prefWidth="8.0" AnchorPane.bottomAnchor="4.0" AnchorPane.topAnchor="4.0" />
                         <ImageView fitHeight="150.0" fitWidth="400.0" layoutY="-25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="366.6666717529297" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="-25.0">
                            <image>
-                              <Image url="@resources/Wedding%20Help%20(1).png" />
+                              <Image url="@../resources/Wedding%20Help%20(1).png" />
                            </image>
                         </ImageView>
                         <TextField fx:id="addTaskField" layoutX="185.0" layoutY="386.0" promptText="Task to add..." AnchorPane.bottomAnchor="18.0" />
                         <Button fx:id="addTaskBtn" layoutX="342.0" layoutY="382.0" mnemonicParsing="false" onAction="#addToTaskScheduelVBox" text="Add" AnchorPane.bottomAnchor="18.0" />
-                        <Label layoutX="15.0" layoutY="390.0" opacity="0.43" text="Uppgifter:" AnchorPane.bottomAnchor="18.0">
+                        <Label layoutX="15.0" layoutY="390.0" opacity="0.43" styleClass="dText" text="Uppgifter:" AnchorPane.bottomAnchor="18.0">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label fx:id="taskDoneLabel" layoutX="75.0" layoutY="390.0" opacity="0.43" text="X" AnchorPane.bottomAnchor="18.0">
+                        <Label fx:id="taskDoneLabel" layoutX="80.0" layoutY="444.0" opacity="0.43" styleClass="dText" text="X" AnchorPane.bottomAnchor="18.0">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -85,6 +58,30 @@
                         </VBox>
                      </children>
                   </AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #383838;">
+               <children>
+                  <VBox fx:id="logbokVbox" prefHeight="505.0" prefWidth="260.0" />
+                  <ScrollPane layoutX="260.0" prefHeight="505.0" prefWidth="600.0" style="-fx-background-color: #383838;">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="503.0" prefWidth="598.0" style="-fx-background-color: #383838;">
+                           <children>
+                              <Button fx:id="saveNoteBtn" layoutX="250.0" layoutY="470.0" mnemonicParsing="false" onAction="#saveNote" text="Spara Anteckning" />
+                              <TextField fx:id="headerField" alignment="CENTER" layoutX="132.0" layoutY="3.0" prefHeight="25.0" prefWidth="347.0" text="Det är här Headern ska stå">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></TextField>
+                              <TextArea fx:id="loggTextArea" layoutX="15.0" layoutY="35.0" prefHeight="430.0" prefWidth="565.0" />
+                              <Label fx:id="dateLabel" layoutX="521.0" layoutY="6.0" prefHeight="24.0" prefWidth="63.0" text="8 / 4 " textFill="WHITE">
+                                 <font>
+                                    <Font name="Verdana Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </ScrollPane>
                </children>
             </AnchorPane>
          </children>
