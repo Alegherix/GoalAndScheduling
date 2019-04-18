@@ -39,3 +39,13 @@
      -fx-text-fill: #ffffff;
      -fx-font-size: 12px;
 }
+
+#progressDone{
+     -fx-font-family: "DejaVu Sans Condensed";
+     -fx-text-fill: #ffffff;
+     -fx-font-size: 12px;
+}
+
+.clickable .content {
+    -fx-cursor: hand ;
+}

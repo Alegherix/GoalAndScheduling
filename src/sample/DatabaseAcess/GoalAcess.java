@@ -10,7 +10,7 @@ public class GoalAcess implements GoalDao {
 
     private Connection getConnection() throws Exception{
         Class.forName("com.mysql.jdbc.Driver");
-        return DriverManager.getConnection("jdbc:mysql://localhost:3306/martinsdb?useSSL=false", "root","root");
+        return DriverManager.getConnection("jdbc:mysql://localhost:3306/martinsdb?allowPublicKeyRetrieval=true&useSSL=false&", "root","root");
     }
 
 

@@ -116,12 +116,7 @@ public class GoalPane extends AnchorPane {
 
     @FXML
     private void showNextProgressView(){
-        if(showingMonth){
-            showingMonth = false;
-        }
-        else{
-            showingMonth = true;
-        }
+        showingMonth = !showingMonth;
         updateProgress();
     }
 

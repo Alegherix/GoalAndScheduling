@@ -1,18 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <fx:root prefHeight="165.0" prefWidth="260.0" style="-fx-background-color: #383838;" stylesheets="@style.css" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="headerLabel" layoutX="87.0" prefHeight="30.0" prefWidth="100.0" styleClass="cText" text="Label" />
-      <TextArea fx:id="textArea" layoutY="30.0" prefHeight="124.0" prefWidth="260.0" text="Idag var en bra dag det började med att jag&#10;gick upp och tränade på gymmet som jag &#10;gillar att göra. När vi var klara med det så&#10;passa vi på att laga lite mat och fortsatte&#10;med att göra det som är bra för mig, När &#10;allting var slut så tog jag och påbörjade...">
+      <Label fx:id="headerLabel" layoutX="84.0" layoutY="2.0" prefHeight="30.0" prefWidth="99.0" styleClass="cText" text="Label">
+         <tooltip>
+            <Tooltip fx:id="headerTooltip" text="Empty Tooltip" />
+         </tooltip></Label>
+      <TextArea fx:id="textArea" editable="false" layoutY="30.0" onMouseClicked="#prepareTextForEdit" prefHeight="124.0" prefWidth="260.0" styleClass="clickable" text="Idag var en bra dag det började med att jag&#10;gick upp och tränade på gymmet som jag &#10;gillar att göra. När vi var klara med det så&#10;passa vi på att laga lite mat och fortsatte&#10;med att göra det som är bra för mig, När &#10;allting var slut så tog jag och påbörjade..." wrapText="true">
          <padding>
             <Insets left="2.0" right="2.0" />
-         </padding></TextArea>
+         </padding>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></TextArea>
       <Label fx:id="scoreLabel" layoutX="208.0" prefHeight="30.0" prefWidth="37.0" styleClass="cText" text="6/10" />
-      <Label fx:id="dateLabel" layoutX="14.0" layoutY="7.0" styleClass="cText" text="8/4" />
+      <Label fx:id="dateLabel" layoutX="8.0" layoutY="7.0" styleClass="cText" text="8/4" />
    </children>
 </fx:root>
